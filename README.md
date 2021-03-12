@@ -6,7 +6,9 @@ he spawn as increased 939-89 with a configurable amount of hp.
 - Role Information
 ``
 RoleID: 682
+
 RoleName: SCP-682
+
 Team: Scp
 ``
 
