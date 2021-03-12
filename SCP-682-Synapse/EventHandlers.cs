@@ -19,17 +19,19 @@ namespace SCP_682_Synapse
         }
         public void OnDoorInteract(DoorInteractEventArgs ev)
         {
-            if(ev.Player.RoleID == 682)
+            if (ev.Player.RoleID == 682)
+            {
                 if (SCP682.Config.can_PryGates == true && ev.Door.VDoor is PryableDoor pryableDoor)
                 {
                     pryableDoor.TryPryGate();
                 }
-            else if (SCP682.Config.scp682_can_destroy_door == true)
-            {
-                int d = Random.Range(0, 101);
-                if (d <= SCP682.Config.scp682_destroy_door_chance && ev.Door.IsBreakable)
+                else if (SCP682.Config.scp682_can_destroy_door == true)
                 {
-                    ev.Door.TryBreakDoor();
+                    int d = Random.Range(0, 101);
+                    if (d <= SCP682.Config.scp682_destroy_door_chance && ev.Door.IsBreakable)
+                    {
+                        ev.Door.TryBreakDoor();
+                    }
                 }
             }
         }
