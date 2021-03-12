@@ -16,7 +16,7 @@ he spawn as increased 939-89 with a configurable amount of hp.
 
 - pry gates like 096 (you can turn it off in config).
 
-#### Installation
+## Installation
 1. [Install Synapse](https://github.com/SynapseSL/Synapse/wiki#hosting-guides)
 2. Place the  SCP-682-Synapse.dll file that you can download [here](https://github.com/Cwaniaak/SCP-682-Synapse/releases/latest) in your plugin directory
 3. Restart/Start your server.
