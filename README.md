@@ -4,6 +4,10 @@
 939-89 has a configurable chance(default 100%) to be SCP-682 when he spawn,
 he spawn as increased 939-89 with a configurable amount of hp.
 
+- Role Information
+```RoleID: 682
+RoleName: SCP-682
+Team: Scp
 ### SCP-682 can:
 
 - regenerate himself a configurable amount of hp(default 5) every configurable time(default 5 seconds),
