@@ -23,13 +23,12 @@ namespace SCP_682_Synapse
             {
                 Player.RoleType = RoleType.Scp93989;
             }
-            Player.Scale = new Vector3();
-                Player.MaxHealth = SCP682.Config.MaxHP;
-                Player.Health = SCP682.Config.MaxHP;
-                Player.SendBroadcast(SCP682.Config.Spawn_message_duration, SCP682.PluginTranslation.ActiveTranslation.spawn_message);
-                Player.Scale = new Vector3(1.30f, 1, 1.50f);
-                Player.DisplayInfo = $"<color={SCP682.Config.DisplayColor}>{SCP682.Config.DisplayName}</color>";
-                coroutines.Add(Timing.RunCoroutine(HealSCP682()));
+            Player.MaxHealth = SCP682.Config.MaxHP;
+            Player.Health = SCP682.Config.MaxHP;
+            Player.SendBroadcast(SCP682.Config.Spawn_message_duration, SCP682.PluginTranslation.ActiveTranslation.spawn_message);
+            Player.Scale = new Vector3(1.22f, 1, 1.22f);
+            Player.DisplayInfo = $"<color={SCP682.Config.DisplayColor}>{SCP682.Config.DisplayName}</color>";
+            coroutines.Add(Timing.RunCoroutine(HealSCP682()));
         }
 
         public override void DeSpawn()
@@ -48,10 +47,7 @@ namespace SCP_682_Synapse
         {
             for (; ; )
             {
-                if (Player.Health < SCP682.Config.MaxHP)
-                {
-                    Player.Health = Player.Health + SCP682.Config.heal_hp;
-                }
+                Player.Heal(SCP682.Config.heal_hp);
                 yield return Timing.WaitForSeconds(SCP682.Config.heal_time);
             }
         }

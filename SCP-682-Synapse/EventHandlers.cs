@@ -10,7 +10,6 @@ namespace SCP_682_Synapse
 {
     public class EventHandlers
     {
-        public Scp682PlayerScript ps;
         public EventHandlers()
         {
             Server.Get.Events.Map.DoorInteractEvent += OnDoorInteract;
@@ -21,14 +20,14 @@ namespace SCP_682_Synapse
         {
             if (ev.Player.RoleID == 682)
             {
-                if (SCP682.Config.can_PryGates == true && ev.Door.VDoor is PryableDoor pryableDoor)
+                if (SCP682.Config.can_PryGates && ev.Door.VDoor is PryableDoor pryableDoor)
                 {
                     pryableDoor.TryPryGate();
                 }
-                else if (SCP682.Config.scp682_can_destroy_door == true)
+                else if (SCP682.Config.scp682_can_destroy_door)
                 {
-                    int d = Random.Range(0, 101);
-                    if (d <= SCP682.Config.scp682_destroy_door_chance && ev.Door.IsBreakable)
+                    int destroychance = Random.Range(1, 100);
+                    if (destroychance <= SCP682.Config.scp682_destroy_door_chance && ev.Door.IsBreakable)
                     {
                         ev.Door.TryBreakDoor();
                     }
@@ -38,31 +37,28 @@ namespace SCP_682_Synapse
 
         public void OnSetClass(PlayerSetClassEventArgs ev)
         {
-                if (ev.Role == RoleType.Scp93989)
+            if (ev.Role == RoleType.Scp93989)
+            {
+                int s = Random.Range(1, 100);
+                if (s <= SCP682.Config.spawn_chance)
                 {
-                    int s = Random.Range(0, 101);
-                    if (s <= SCP682.Config.spawn_chance)
+                    Timing.CallDelayed(0.1f, () =>
                     {
-                       Timing.CallDelayed(0.1f, () =>
-                       {
-                          ev.Player.RoleID = 682;
-                       });
-                    }
+                        ev.Player.RoleID = 682;
+                    });
                 }
+            }
         }
 
         public void OnDamage(PlayerDamageEventArgs ev)
         {
-            if (ev.Killer.RoleID == 682 && ev.Killer.Team != Team.SCP)
+            if (ev.Killer.RoleID == 682 && SynapseExtensions.CanHarmScp(ev.Killer, false))
             {
                 if (SCP682.Config.can_kill_on_oneshot == true)
                 {
                     ev.Victim.Kill(DamageTypes.Scp939);
                 }
-                if (ev.Killer.Health < SCP682.Config.MaxHP)
-                {
-                    ev.Killer.Health = ev.Killer.Health + SCP682.Config.heal_hp_when_eat;
-                }
+                ev.Killer.Heal(SCP682.Config.heal_hp_when_eat);
             }
         }
     }
