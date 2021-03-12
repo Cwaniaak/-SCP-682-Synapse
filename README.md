@@ -1,7 +1,7 @@
 # SCP-682-Synapse
  ## Description:
 
-939-89 has a configurable chance to be SCP-682 when he spawn,
+939-89 has a configurable chance(default 100%) to be SCP-682 when he spawn,
 he spawn as increased 939-89 with a configurable amount of hp.
 
 ### SCP-682 can:
