@@ -13,7 +13,7 @@ Name = "SCP-682",
 SynapseMajor = 2,
 SynapseMinor = 5,
 SynapsePatch = 3,
-Version = "v.1.0.2"
+Version = "v.1.2.0"
 )]
     public class SCP682 : AbstractPlugin
     {
