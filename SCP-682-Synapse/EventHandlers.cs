@@ -5,6 +5,7 @@ using Synapse.Api.Events.SynapseEventArguments;
 using Interactables.Interobjects;
 using UnityEngine;
 using MEC;
+using PlayerStatsSystem;
 
 namespace SCP_682_Synapse
 {
@@ -54,9 +55,9 @@ namespace SCP_682_Synapse
         {
             if (ev.Killer.RoleID == 682 && SynapseExtensions.CanHarmScp(ev.Killer, false))
             {
-                if (SCP682.Config.can_kill_on_oneshot == true)
+                if (SCP682.Config.can_kill_on_oneshot)
                 {
-                    ev.Victim.Kill(DamageTypes.Scp939);
+                    ev.Victim.Kill();
                 }
                 ev.Killer.Heal(SCP682.Config.heal_hp_when_eat);
             }

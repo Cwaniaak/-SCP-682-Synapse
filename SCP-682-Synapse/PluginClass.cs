@@ -6,14 +6,14 @@ using Synapse.Translation;
 namespace SCP_682_Synapse
 {
     [PluginInformation(
-Author = "Cwaniak U.G",
+Author = "Naku",
 Description = "",
 LoadPriority = 1,
 Name = "SCP-682",
 SynapseMajor = 2,
 SynapseMinor = 5,
 SynapsePatch = 3,
-Version = "v.1.0.1"
+Version = "v.1.0.2"
 )]
     public class SCP682 : AbstractPlugin
     {

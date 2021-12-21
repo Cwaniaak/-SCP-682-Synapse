@@ -23,7 +23,6 @@ namespace SCP_682_Synapse
             {
                 Player.RoleType = RoleType.Scp93989;
             }
-            Player.MaxHealth = SCP682.Config.MaxHP;
             Player.Health = SCP682.Config.MaxHP;
             Player.SendBroadcast(SCP682.Config.Spawn_message_duration, SCP682.PluginTranslation.ActiveTranslation.spawn_message);
             Player.Scale = new Vector3(1.22f, 1, 1.22f);
