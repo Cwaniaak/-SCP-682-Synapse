@@ -27,7 +27,7 @@ namespace SCP_682_Synapse
             Player.SendBroadcast(SCP682.Config.Spawn_message_duration, SCP682.PluginTranslation.ActiveTranslation.spawn_message);
             Player.Scale = new Vector3(1.22f, 1, 1.22f);
             Player.DisplayInfo = $"<color={SCP682.Config.DisplayColor}>{SCP682.Config.DisplayName}</color>";
-            coroutines.Add(Timing.RunCoroutine(HealSCP682()));
+            coroutines.Add(Timing.RunCoroutine(Heal()));
         }
 
         public override void DeSpawn()
@@ -42,7 +42,7 @@ namespace SCP_682_Synapse
             coroutines.Clear();
         }
 
-        public IEnumerator<float> HealSCP682()
+        public IEnumerator<float> Heal()
         {
             for (; ; )
             {

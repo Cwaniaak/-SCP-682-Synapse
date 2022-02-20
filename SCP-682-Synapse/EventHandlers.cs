@@ -25,10 +25,10 @@ namespace SCP_682_Synapse
                 {
                     pryableDoor.TryPryGate();
                 }
-                else if (SCP682.Config.scp682_can_destroy_door)
+                else if (SCP682.Config.can_destroy_door)
                 {
                     int destroychance = Random.Range(1, 100);
-                    if (destroychance <= SCP682.Config.scp682_destroy_door_chance && ev.Door.IsBreakable)
+                    if (destroychance <= SCP682.Config.destroy_door_chance && ev.Door.IsBreakable)
                     {
                         ev.Door.TryBreakDoor();
                     }
@@ -53,13 +53,13 @@ namespace SCP_682_Synapse
 
         public void OnDamage(PlayerDamageEventArgs ev)
         {
-            if (ev.Killer.RoleID == 682 && SynapseExtensions.CanHarmScp(ev.Killer, false))
+            if (ev.Victim.RoleID != 682 && ev.Killer.RoleID == 682 && SynapseExtensions.CanHarmScp(ev.Killer, false))
             {
                 if (SCP682.Config.can_kill_on_oneshot)
                 {
                     ev.Victim.Kill();
                 }
-                ev.Killer.Heal(SCP682.Config.heal_hp_when_eat);
+                ev.Killer.Heal(SCP682.Config.heal_hp_when_damage);
             }
         }
     }
