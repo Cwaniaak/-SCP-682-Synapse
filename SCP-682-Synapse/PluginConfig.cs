@@ -16,7 +16,7 @@ namespace SCP_682_Synapse
         public string DisplayName { get; set; } = "SCP-682";
 
         [Description("The Color which the text of Scp682 should have")]
-        public string DisplayColor { get; set; } = "red";
+        public string DisplayColor { get; set; } = "#C50000";
         public int spawn_chance { get; set; } = 100;
         [Description("is the SCP-682 supposed to kill with one bite")]
         public bool can_kill_on_oneshot { get; set; } = true;

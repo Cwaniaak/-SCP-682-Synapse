@@ -6,6 +6,7 @@ using Interactables.Interobjects;
 using UnityEngine;
 using MEC;
 using PlayerStatsSystem;
+using Logger = Synapse.Api.Logger;
 
 namespace SCP_682_Synapse
 {
@@ -53,7 +54,7 @@ namespace SCP_682_Synapse
 
         public void OnDamage(PlayerDamageEventArgs ev)
         {
-            if (ev.Victim.RoleID != 682 && ev.Killer.RoleID == 682 && SynapseExtensions.CanHarmScp(ev.Killer, false))
+            if (ev.Killer != null && ev.Victim != null && ev.Victim.RoleID != 682 && ev.Killer.RoleID == 682 && SynapseExtensions.CanHarmScp(ev.Killer, false))
             {
                 if (SCP682.Config.can_kill_on_oneshot)
                 {
